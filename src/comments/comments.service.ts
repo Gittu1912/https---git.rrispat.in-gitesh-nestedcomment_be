@@ -25,7 +25,7 @@ export class CommentsService {
     });
   }
 
-  findAll() {
+  findAll(){
     return this.commentModel.find().populate(['user']).exec();
   }
 
@@ -35,6 +35,7 @@ export class CommentsService {
         parent: null,
       })
       .populate(['user', 'parent'])
+      .sort({createdAt: -1})
       .exec();
   }
 
@@ -44,6 +45,7 @@ export class CommentsService {
         parent: parentId,
       })
       .populate(['user', 'parent'])
+      .sort({createdAt: -1})
       .exec();
   }
 
